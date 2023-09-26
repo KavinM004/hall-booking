@@ -7,15 +7,15 @@ app.use(express.json());
 //room
 const rooms = [
   {
-    name: "Elite",
-    seats: 50,
-    amenities: "wifi,projection screen,AC",
-    price: 1500,
-    roomId: "2525",
+    name: "Denuka Hall",
+    seats: 60,
+    amenities: ["wifi,projection screen"],
+    price: 50,
+    roomId: "124",
     bookingDetails: [
       {
-        customerName: "Guvi",
-        date: new Date("2023-01-04"),
+        customerName: "Kavin M",
+        date: new Date("2023-01-28"),
         start: "07:00",
         end: "10:00",
         status: "confirmed",
@@ -23,15 +23,15 @@ const rooms = [
     ],
   },
   {
-    name: "Premium",
-    seats: 100,
-    amenities: "wifi,projection screen,AC",
-    price: 2500,
-    roomId: "5252",
+    name: "Darbar Hall",
+    seats: 70,
+    amenities: ["wifi,projection screen,AC"],
+    price: 100,
+    roomId: "125",
     bookingDetails: [
       {
-        customerName: "zen",
-        date: new Date("2023-01-05"),
+        customerName: "Dharun M",
+        date: new Date("2023-01-17"),
         start: "15:00",
         end: "17:00",
         status: "Payment Pending",
@@ -39,15 +39,15 @@ const rooms = [
     ],
   },
   {
-    name: "Semi Class",
-    seats: 120,
-    amenities: "wifi,projection screen,AC,Food",
-    price: 2500,
-    roomId: "2255",
+    name: "Seminar Hall",
+    seats: 150,
+    amenities: ["wifi,projection screen,AC,Whiteboard"],
+    price: 250,
+    roomId: "126",
     bookingDetails: [
       {
-        customerName: "GEEK",
-        date: new Date("2023-1-06"),
+        customerName: "Nirmal M",
+        date: new Date("2023-1-16"),
         start: "15:00",
         end: "17:00",
         status: "Payment Pending",
@@ -57,7 +57,7 @@ const rooms = [
 ];
 //common call api status
 app.get("/", (req, res) => {
-  res.status(200).send("Welcome To Hall Booking App");
+  res.status(200).send("Hall Booking API");
 });
 
 //create room
@@ -109,7 +109,7 @@ app.post("/bookRoom", (req, res, next) => {
   }
 });
 
-app.get("/listCustomer", (req, res) => {
+app.get("/bookHistory", (req, res) => {
   let customerArray = [];
 
   rooms.forEach((room) => {
@@ -130,7 +130,7 @@ app.get("/listCustomer", (req, res) => {
 
 //get rooms
 
-app.get("/listRooms", (req, res) => {
+app.get("/roomsBooked", (req, res) => {
   console.log("list rooms");
   res.status(200).send(rooms);
 });
@@ -139,8 +139,8 @@ app.get("/", (req, res) => {
   console.log("Welcome To Hall Booking");
 });
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log(`server started at ${port}`);
+  console.log(`server running on : ${port}`);
 });
